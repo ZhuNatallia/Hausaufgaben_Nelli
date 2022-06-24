@@ -13,40 +13,51 @@ let workersArr = [];
 const cardsRender = () => {
 	const cardscontainer = document.querySelector('.cards_container');
 	cardscontainer.innerText = '';
-	workersArr.forEach(({ firstname, lastname, age, rate, days }) => {
+	workersArr.forEach(({ firstname, lastname, age, rate, days, salary }) => {
 		const container = document.createElement('div');
 		const firstnameElem = document.createElement('p');
 		const lastnameElem = document.createElement('p');
 		const ageElem = document.createElement('p');
 		const rateElem = document.createElement('p');
 		const daysElem = document.createElement('p');
+		const salaryElem = document.createElement('p');
 
 		firstnameElem.innerText = `First name: ${firstname}`;
 		lastnameElem.innerText = `Last name: ${lastname}`;
 		ageElem.innerText = `Age: ${age}`;
 		rateElem.innerText = `Rate: ${rate}`;
 		daysElem.innerText = `Days: ${days}`;
+		salaryElem.innerText = `Salary: ${rate * days}`;
 
-		container.append(firstnameElem, lastnameElem, ageElem, rateElem, daysElem);
+		container.append(
+			firstnameElem,
+			lastnameElem,
+			ageElem,
+			rateElem,
+			daysElem,
+			salaryElem
+		);
 		cardscontainer.append(container);
 	});
 };
 
 formElem.addEventListener('submit', (event) => {
 	event.preventDefault();
-	const { firstname, lastname, age, rate, days } = event.target; //this ксли не стрелочная
+	const { firstname, lastname, age, rate, days, salary } = event.target; //this ксли не стрелочная
 	workersArr.push({
 		firstname: firstname.value,
 		lastname: lastname.value,
 		age: age.value,
 		rate: rate.value,
 		days: days.value,
+		salary: salary.value,
 	});
 	firstname.value = '';
 	lastname.value = '';
 	age.value = '';
 	rate.value = '';
 	days.value = '';
+	salary.value = '';
 	console.log(workersArr);
 	cardsRender();
 });
