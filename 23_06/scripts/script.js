@@ -18,6 +18,7 @@ const cardsRender = () => {
 			progress,
 		}) => {
 			const container = document.createElement('div');
+			container.classList.add('card');
 			const firstnameElem = document.createElement('p');
 			const lastnameElem = document.createElement('p');
 			const ageElem = document.createElement('p');
