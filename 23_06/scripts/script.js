@@ -27,7 +27,9 @@ const cardsRender = () => {
 			const salaryElem = document.createElement('p');
 			const user_avatar = document.createElement('img');
 			const user_email = document.createElement('a');
-			const progressElem = document.createElement('div');
+			const progressContainer = document.createElement('div');
+			const progressLine = document.createElement('div');
+			const progressValue = document.createElement('p');
 
 			firstnameElem.innerText = `First name: ${firstname}`;
 			lastnameElem.innerText = `Last name: ${lastname}`;
@@ -37,7 +39,17 @@ const cardsRender = () => {
 			salaryElem.innerText = `Salary: ${rate * days}`;
 			user_avatar.setAttribute('src', avatar);
 			user_email.innerText = `E-mail: ${email}`;
-			progressElem.innerText = `Progress: ${progress}`;
+			user_email.setAttribute('href', `mailto:${email}`);
+			//progressContainer.innerText = `Progress: ${progress}`;
+			user_email.classList.add('user-email');
+
+			progressValue.innerText = progress + '%';
+			progressContainer.classList.add('progress-container');
+			progressLine.classList.add('progress-line');
+			progressLine.style.width = progress + '%';
+			progressValue.classList.add('progress-value');
+
+			progressContainer.append(progressLine, progressValue);
 
 			container.append(
 				user_avatar,
@@ -48,7 +60,7 @@ const cardsRender = () => {
 				daysElem,
 				salaryElem,
 				user_email,
-				progressElem
+				progressContainer
 			);
 			cardscontainer.append(container);
 		}
